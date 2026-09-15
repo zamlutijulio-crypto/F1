@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Apex Grand Prix 2D - F1 Web Simulator</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Overlay de Menus -->
+    <div id="ui-overlay">
+      <!-- Menu Inicial -->
+      <div id="main-menu" class="screen active">
+        <h1 class="game-title">APEX GRAND PRIX 2D</h1>
+        <p class="subtitle">Simulador Tático de Fórmula 1</p>
+        <div class="menu-buttons">
+          <button id="btn-start" class="btn primary">INICIAR CORRIDA</button>
+          <button id="btn-controls" class="btn secondary">CONTROLES</button>
+          <button id="btn-records" class="btn secondary">RECORDES</button>
+        </div>
+        <p class="build-version">Fase 1 — Base Jogável | 2026 Edition</p>
+      </div>
+
+      <!-- Modal de Controles -->
+      <div id="controls-screen" class="screen hidden">
+        <h2>CONTROLES DO CARRO</h2>
+        <ul class="controls-list">
+          <li><span>W / Seta Acima:</span> Acelerar</li>
+          <li><span>S / Seta Abaixo:</span> Frear / Ré</li>
+          <li><span>A / Seta Esquerda:</span> Virar à esquerda</li>
+          <li><span>D / Seta Direita:</span> Virar à direita</li>
+          <li><span>P:</span> Pausar Jogo</li>
+          <li><span>R:</span> Reiniciar Posição</li>
+        </ul>
+        <button id="btn-back-controls" class="btn secondary">VOLTAR</button>
+      </div>
+
+      <!-- Modal de Recordes -->
+      <div id="records-screen" class="screen hidden">
+        <h2>MELHORES VOLTAS</h2>
+        <div id="records-list">
+          <p>Nenhum tempo registrado ainda nesta sessão.</p>
+        </div>
+        <button id="btn-back-records" class="btn secondary">VOLTAR</button>
+      </div>
+
+      <!-- Tela de Fim de Prova -->
+      <div id="results-screen" class="screen hidden">
+        <h2>FIM DE PROVA</h2>
+        <div class="results-stats">
+          <p>Tempo Total: <span id="res-total-time">00:00.000</span></p>
+          <p>Melhor Volta: <span id="res-best-lap">00:00.000</span></p>
+          <p>Voltas Completadas: <span id="res-laps-count">0</span></p>
+        </div>
+        <button id="btn-restart" class="btn primary">JOGAR NOVAMENTE</button>
+        <button id="btn-results-menu" class="btn secondary">MENU PRINCIPAL</button>
+      </div>
+    </div>
+
+    <!-- HUD de Corrida -->
+    <div id="hud" class="hud-container hidden">
+      <div class="hud-top">
+        <div class="hud-box">
+          <span class="label">POSIÇÃO</span>
+          <span class="value">1 / 1</span>
+        </div>
+        <div class="hud-box">
+          <span class="label">VOLTA</span>
+          <span id="hud-lap" class="value">1 / 3</span>
+        </div>
+        <div class="hud-box">
+          <span class="label">TEMPO</span>
+          <span id="hud-current-time" class="value">00:00.000</span>
+        </div>
+        <div class="hud-box">
+          <span class="label">MELHOR</span>
+          <span id="hud-best-time" class="value">--:--.---</span>
+        </div>
+      </div>
+
+      <div class="hud-bottom">
+        <div class="hud-box telemetry">
+          <span class="label">VELOCIDADE</span>
+          <span id="hud-speed" class="value-large">0 <small>km/h</small></span>
+        </div>
+        <div class="hud-box status">
+          <span class="label">SUPERFÍCIE</span>
+          <span id="hud-surface" class="value tag-track">PISTA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
